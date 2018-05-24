@@ -13,6 +13,8 @@ module.exports = function(grunt) {
 					"modules": true
 				},
 				"globals": [
+					"__dirname",
+					"__filename",
 					"setTimeout",
 					"requireSubject",
 					"EventEmitter",
@@ -29,7 +31,7 @@ module.exports = function(grunt) {
 				/* http://eslint.org/docs/rules/ */
 				"rules": {
 					"eqeqeq": 0,
-					"curly": 2,
+					"curly": [2, "multi"],
 					"no-undef": 2,
 					"semi": 2,
 					"indent": [2, "tab", {
@@ -45,7 +47,7 @@ module.exports = function(grunt) {
 					}],
 					"block-scoped-var": 2,
 					"no-undef": 2,
-					"semi": 1,
+					"semi": 2,
 					"camelcase": 2,
 					"max-depth": 2,
 					"no-unused-vars": 1
@@ -102,29 +104,29 @@ module.exports = function(grunt) {
 	
 	grunt.initConfig(gruntConfiguration);
 	grunt.registerTask("jasmine", function() {
-		var Reporter, reporter;
+		var done = this.async();
 		var Jasmine = require("jasmine");
 		var jasmine = new Jasmine();
-		var done = this.async();
-
+		
+		var Reporter = require("jasmine-console-reporter");
+		var reporter = new Reporter({
+			colors:2,
+			verbosity: 3,
+			emoji: false
+		});
+		
 		jasmine.configureDefaultReporter(false);
 		jasmine.onComplete(done);
 		jasmine.loadConfig({
 			"spec_dir": "spec",
-			"spec_files": [
-				"**\/*-[sS]pec.js"
-			],
+			"spec_files": ["**/*-spec.js"],
+			"random": false,
 			"helpers": [
 				"helpers\/**\/*-addon.js"
 			]
 		});
 		
-		Reporter = require("jasmine-console-reporter");
-		reporter = new Reporter({
-			colors:2,
-			verbosity: 3,
-			emoji: false
-		});
+		
 		jasmine.addReporter(reporter);
 
 		jasmine.execute();

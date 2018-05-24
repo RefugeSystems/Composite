@@ -29,6 +29,7 @@
 		"grunt-contrib-yuidoc": "^1.0.0",
 		"gruntify-eslint": "^4.0.0",
 		"jasmine": "^3.1.0",
+		"jasmine-console-reporter": "^3.0.2",
 		"load-grunt-tasks": "^4.0.0"
 	},
 	"aconfiguration": {}
