@@ -107,6 +107,13 @@ describe("Synthesis path operation", function() {
 		relation.source = 6;
 		relation.target = 7;
 		construct.createRelation(new Relation(relation));
+		
+		relation = {};
+		relation.name = "EH";
+		relation.id = 19;
+		relation.source = 4;
+		relation.target = 7;
+		construct.createRelation(new Relation(relation));
 	});
 	
 	it("can find a path when the resources are adjacent", function(done) {
@@ -153,7 +160,7 @@ describe("Synthesis path operation", function() {
 		.catch(done);
 	});
 	
-	it("Reports unrelated when no path exists between the resources", function(done) {
+	it("Reports unrelated when no path exists between the resources with no immediate relationships to the source", function(done) {
 		construct.operations.path(7,5)
 		.then(function(result) {
 			done(new Error("Call should not succeed"));
@@ -163,6 +170,21 @@ describe("Synthesis path operation", function() {
 			expect(err.message).toBe(Operation.messages.notFound);
 			expect(err.source).toBe(7);
 			expect(err.target).toBe(5);
+			done();
+		});
+	});
+	
+	it("Reports unrelated when no path exists between the resources with some immediate relationships to the source", function(done) {
+		construct.operations.path(4, 6)
+		.then(function(result) {
+			console.log(result);
+			done(new Error("Call should not succeed"));
+		})
+		.catch(function(err) {
+			expect(err).toBeDefined();
+			expect(err.message).toBe(Operation.messages.notFound);
+			expect(err.source).toBe(4);
+			expect(err.target).toBe(6);
 			done();
 		});
 	});
