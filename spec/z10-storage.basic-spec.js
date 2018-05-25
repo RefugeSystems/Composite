@@ -115,21 +115,62 @@ describe("Synthesis Basic Storage subsystem", function() {
 			return construct.getResourceRelations([4]);
 		})
 		.then(function(mapped) {
-			expect(mapped[4]).not.toBeDefined();
-			expect(mapped[5]).toBeDefined();
-			expect(mapped[7438912]).toBeDefined();
+			expect(mapped[0]).not.toBeDefined();
+			expect(mapped[4]).toBeDefined();
+			expect(mapped[22]).toBeDefined();
 			return construct.getResourceRelations([5]);
 		})
 		.then(function(mapped) {
-			expect(mapped[7438912]).toBeDefined();
+			expect(mapped[0]).toBeDefined();
 			expect(mapped[4]).not.toBeDefined();
-			expect(mapped[5]).not.toBeDefined();
+			expect(mapped[22]).not.toBeDefined();
 			return construct.getResourceRelations([7438912]);
 		})
 		.then(function(mapped) {
-			expect(mapped[7438912]).not.toBeDefined();
+			expect(mapped[0]).not.toBeDefined();
+			expect(mapped[4]).not.toBeDefined();
+			expect(mapped[22]).not.toBeDefined();
+			done();
+		})
+		.catch(done);
+	});
+	
+	it("retrieves targets for given resources", function(done) {
+		construct.putRelation(resources[0])
+		.then(function() {
+			return construct.putResource(resources[1]);
+		})
+		.then(function() {
+			return construct.putResource(resources[2]);
+		})
+		.then(function() {
+			return construct.putRelation(relations[0]);
+		})
+		.then(function() {
+			return construct.putRelation(relations[1]);
+		})
+		.then(function() {
+			return construct.putRelation(relations[2]);
+		})
+		.then(function() {
+			return construct.getResourceTargets([4]);
+		})
+		.then(function(mapped) {
+			expect(mapped[4]).not.toBeDefined();
+			expect(mapped[5]).toBeDefined();
+			expect(mapped[7438912]).toBeDefined();
+			return construct.getResourceTargets([5]);
+		})
+		.then(function(mapped) {
+			expect(mapped[7438912]).toBeDefined();
 			expect(mapped[4]).not.toBeDefined();
 			expect(mapped[5]).not.toBeDefined();
+			return construct.getResourceTargets([7438912]);
+		})
+		.then(function(mapped) {
+			expect(mapped[0]).not.toBeDefined();
+			expect(mapped[4]).not.toBeDefined();
+			expect(mapped[22]).not.toBeDefined();
 			done();
 		})
 		.catch(done);
