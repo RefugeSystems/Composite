@@ -1,16 +1,11 @@
 
-describe("Synthesis library", function() {
+describe("Synthesis library Construct", function() {
 	var Synthesis = require("../lib");
 	
 	var construct;
 	
 	it("can be instantiated", function() {
-		construct = new Synthesis();
-		expect(construct).toBeDefined();
-	});
-	
-	it("accepts options without error", function() {
-		construct = new Synthesis({});
+		construct = new Synthesis.Construct({}, {});
 		expect(construct).toBeDefined();
 	});
 	
@@ -27,6 +22,6 @@ describe("Synthesis library", function() {
 				}
 		};
 		
-		scan(Synthesis.events);
+		scan(Synthesis.Construct.events);
 	});
 });

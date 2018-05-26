@@ -23,10 +23,14 @@ module.exports = function(grunt) {
 					"require",
 					"console",
 					"Promise",
+					"globals",
 					"global",
 					"process",
 					"btoa",
-					"atob"
+					"atob",
+					
+					// Testing
+					"generateTestData"
 				],
 				/* http://eslint.org/docs/rules/ */
 				"rules": {
@@ -122,7 +126,7 @@ module.exports = function(grunt) {
 			"spec_files": ["**/*-spec.js"],
 			"random": false,
 			"helpers": [
-				"helpers\/**\/*-addon.js"
+				"**/_addon-*"
 			]
 		});
 		

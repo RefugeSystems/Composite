@@ -22,7 +22,9 @@
 	"bugs": {
 		"url": "https://github.com/RefugeSystems/Synthesis/issues"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"random": "git+ssh://git@github.com/RefugeSystems/Random.git"
+	},
 	"devDependencies": {
 		"grunt": "^1.0.2",
 		"grunt-contrib-watch": "^1.1.0",
