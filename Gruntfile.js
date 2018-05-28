@@ -23,7 +23,6 @@ module.exports = function(grunt) {
 					"require",
 					"console",
 					"Promise",
-					"globals",
 					"global",
 					"process",
 					"btoa",
