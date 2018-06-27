@@ -98,7 +98,7 @@ module.exports = function(grunt) {
 				"version": "<%= pkg.version %>",
 				"url": "<%= pkg.homepage %>",
 				"options": {
-					"paths": "./library",
+					"paths": "./lib",
 					"outdir": "./docs"
 				}
 			}

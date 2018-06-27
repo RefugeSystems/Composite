@@ -10,7 +10,7 @@ describe("Synthesis path operation", function() {
 	});
 	
 	it("can find a path when the resources are adjacent", function(done) {
-		construct.operations.path(0,1)
+		construct.operations.path([0, 1])
 		.then(function(result) {
 			expect(result).toBeDefined();
 			expect(result.path).toBeDefined();
@@ -28,7 +28,7 @@ describe("Synthesis path operation", function() {
 	});
 	
 	it("can find a path when the resources are not adjacent", function(done) {
-		construct.operations.path(0,5)
+		construct.operations.path([0, 5])
 		.then(function(result) {
 			expect(result).toBeDefined();
 			expect(result.path).toBeDefined();
@@ -54,7 +54,7 @@ describe("Synthesis path operation", function() {
 	});
 	
 	it("Reports unrelated when no path exists between the resources with no immediate relationships to the source", function(done) {
-		construct.operations.path(7,5)
+		construct.operations.path([7, 5])
 		.then(function(result) {
 			done(new Error("Call should not succeed: " + JSON.stringify(result, null, 4)));
 		})
@@ -68,7 +68,7 @@ describe("Synthesis path operation", function() {
 	});
 	
 	it("Reports unrelated when no path exists between the resources with some immediate relationships to the source", function(done) {
-		construct.operations.path(4, 6)
+		construct.operations.path([4, 6])
 		.then(function(result) {
 			console.log(result);
 			done(new Error("Call should not succeed"));

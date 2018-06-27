@@ -1,6 +1,6 @@
 {
 	"name": "rs-synthesis",
-	"version": "0.0.2",
+	"version": "0.0.201",
 	"description": "Library for tracking relationships between system resources and querying states.",
 	"homepage": "https://github.com/RefugeSystems/Synthesis",
 	"author": "aetherwalker@refugesystems.net",

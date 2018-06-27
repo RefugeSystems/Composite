@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib\index.js - rs-synthesis</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="rs-synthesis" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.0.2</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/BasicStorageUnit.html">BasicStorageUnit</a></li>
+                                <li><a href="../classes/Construct.html">Construct</a></li>
+                                <li><a href="../classes/OperationPath.html">OperationPath</a></li>
+                                <li><a href="../classes/Random.html">Random</a></li>
+                                <li><a href="../classes/Relation.html">Relation</a></li>
+                                <li><a href="../classes/Resource.html">Resource</a></li>
+                                <li><a href="../classes/Revision.html">Revision</a></li>
+                                <li><a href="../classes/StorageUnit.html">StorageUnit</a></li>
+                                <li><a href="../classes/Synthesis.html">Synthesis</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/Operations.html">Operations</a></li>
+                                <li><a href="../modules/Synthesis.html">Synthesis</a></li>
+                                <li><a href="../modules/SynthesisStorage.html">SynthesisStorage</a></li>
+                                <li><a href="../modules/Utility.html">Utility</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: lib\index.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+
+var EventEmitter = require(&quot;events&quot;);
+var Resource = require(&quot;./resource&quot;);
+var Relation = require(&quot;./relation&quot;);
+var Construct = require(&quot;./construct&quot;);
+var fs = require(&quot;fs&quot;);
+
+var Random = require(&quot;./utilities/random&quot;);
+
+/**
+ * All requests return a &quot;callID&quot;. 
+ * 
+ * @class Synthesis
+ * @constructor
+ * @param {Object} options
+ * @param {StorageUnit} [storage]
+ */
+module.exports = function(options, storage) {
+	var loop;
+	
+	options = Object.assign({}, defaults, options);
+	if(!storage) {
+		options.Storage = require(&quot;./storage&quot;);
+		storage = new options.Storage();
+	}
+	options.storage = storage.name || storage.constructor.name;
+	
+	var emitter = new EventEmitter();
+	this.__proto__ = emitter;
+	
+	var calls = 0;
+	var getCallID = function() {
+		return calls++;
+	};
+	
+	var emit = function(callID, event) {
+		return function(result) {
+			setTimeout(function() {
+				result = result || {};
+				if(result instanceof Array)
+					result = {&quot;list&quot;: result};
+				result._callID = callID;
+				result._time = Date.now();
+				result._type = event;
+				emitter.emit(event, result);
+			}, 0);
+		};
+	};
+	
+	var failCall = function(callID) {
+		return function(error) {
+			setTimeout(function() {
+				error = error || {&quot;message&quot;: &quot;Unknown Error&quot;};
+				error._callID = callID;
+				error._time = Date.now();
+				emitter.emit(events.error, error);
+			}, 0);
+		};
+	};
+	
+	/**
+	 * 
+	 * @method options
+	 * @return {Object} A copy of the options object for introspection.
+	 */
+	this.options = function() {
+		return JSON.parse(JSON.stringify(options));
+	};
+	
+	this.operations = {};
+	var ops = fs.readdirSync(__dirname + &quot;/operations&quot;);
+	for(loop=0; loop&lt;ops.length; loop++) {
+		ops[loop] = ops[loop].slice(0,-3); 
+		this.operations[ops[loop]] = require(&quot;./operations/&quot; + ops[loop]).bind(storage);
+	}
+	
+	
+	this.listResources = function() {
+		return storage.getResources();
+	};
+	
+	/**
+	 * 
+	 * @method createResource
+	 * @param {Object} details
+	 */
+	this.createResource = function(details) {
+		var callID = getCallID();
+		storage.putResource(details)
+		.then(emit(callID, events.resource.create))
+		.catch(failCall(callID));
+		return callID;
+	};
+
+	/**
+	 *
+	 * @method gatherResources
+	 * @param {Array | Number} ids
+	 */
+	this.gatherResources = function(ids) {
+		var callID = getCallID();
+		storage.getResources(ids)
+		.then(emit(callID, events.resource.gather))
+		.catch(failCall(callID));
+		return callID;
+	};
+
+	/**
+	 *
+	 * @method removeResources
+	 * @param {Array | Number} ids
+	 */
+	this.removeResources = function(ids) {
+		var callID = getCallID();
+		storage.outResources(ids)
+		.then(emit(callID, events.resource.remove))
+		.catch(failCall(callID));
+		return callID;
+	};
+	
+	/**
+	 * 
+	 * @method createRelation
+	 * @param {Object} details
+	 */
+	this.createRelation = function(details) {
+		var callID = getCallID();
+		storage.putRelation(details)
+		.then(emit(callID, events.relation.create))
+		.catch(failCall(callID));
+		return callID;
+	};
+
+	/**
+	 *
+	 * @method gatherRelations
+	 * @param {Array | Number} ids
+	 */
+	this.gatherRelations = function(ids) {
+		var callID = getCallID();
+		storage.getRelations(ids)
+		.then(emit(callID, events.relation.gather))
+		.catch(failCall(callID));
+		return callID;
+	};
+
+	/**
+	 *
+	 * @method removeRelations
+	 * @param {Array | Number} ids
+	 */
+	this.removeRelations = function(ids) {
+		var callID = getCallID();
+		storage.outRelations(ids)
+		.then(emit(callID, events.relation.remove))
+		.catch(failCall(callID));
+		return callID;
+	};
+
+	/**
+	 *
+	 * @method compileConstruct
+	 * @param {Object} details
+	 */
+	this.compileConstruct = function(details) {
+		var callID = getCallID();
+		var construct = new Construct(emit, details);
+		storage.putConstruct(construct)
+		.then(emit(callID, events.construct.create))
+		.catch(failCall(callID));
+		return callID;
+	};
+
+	/**
+	 *
+	 * @method requestConstructs
+	 * @param {Number} concept
+	 * @param {Array | Number} resources
+	 */
+	this.requestConstructs = function(ids) {
+		var callID = getCallID();
+		storage.getConstructs(ids)
+		.then(emit(callID, events.construct.gather))
+		.catch(failCall(callID));
+		return callID;
+	};
+
+	/**
+	 *
+	 * @method dismissConstructs
+	 * @param {Number} id
+	 */
+	this.dismissConstructs = function(ids) {
+		var callID = getCallID();
+		storage.outConstructs(ids)
+		.then(emit(callID, events.construct.remove))
+		.catch(failCall(callID));
+		return callID;
+	};
+	
+	/**
+	 *
+	 * @method appendResource
+	 * @param {Number} id Target Construct&#x27;s ID
+	 * @param {Array | Number} resources
+	 */
+	this.appendResources = function(id, resources) {
+		var call = getCallID();
+		storage.getConstructs([id])
+		.then(function(construct) {
+			construct = construct[id];
+			construct.appendResources(call, resources);
+			return {&quot;id&quot;:construct.id};
+		})
+		.then(emit(call, events.construct.update))
+		.catch(failCall(call));
+		return call;
+	};
+
+	/**
+	 *
+	 * @method detachResources
+	 * @param {Number} id Target Construct&#x27;s ID
+	 * @param {Array | Number} resources
+	 */
+	this.detachResources = function(id, resources) {
+		var call = getCallID();
+		storage.getConstructs([id])
+		.then(function(construct) {
+			construct = construct[id];
+			construct.detachResources(call, resources);
+			return {&quot;id&quot;:construct.id};
+		})
+		.then(emit(call, events.construct.update))
+		.catch(failCall(call));
+		return call;
+	};
+
+	/**
+	 *
+	 * @method appendRelations
+	 * @param {Number} id Target Construct&#x27;s ID
+	 * @param {Array | Number} relations
+	 */
+	this.appendRelations = function(id, relations) {
+		var call = getCallID();
+		storage.getConstructs([id])
+		.then(function(construct) {
+			construct = construct[id];
+			construct.appendRelations(call, relations);
+			return {&quot;id&quot;:construct.id};
+		})
+		.then(emit(call, events.construct.update))
+		.catch(failCall(call));
+		return call;
+	};
+
+	/**
+	 *
+	 * @method detachRelations
+	 * @param {Number} id Target Construct&#x27;s ID
+	 * @param {Array | Number} relations
+	 */
+	this.detachRelations = function(id, relations) {
+		var call = getCallID();
+		storage.getConstructs([id])
+		.then(function(construct) {
+			construct = construct[id];
+			construct.detachRelations(call, relations);
+			return {&quot;id&quot;:construct.id};
+		})
+		.then(emit(call, events.construct.update))
+		.catch(failCall(call));
+		return call;
+	};
+};
+
+/**
+ * 
+ * @property defaults
+ * @type Object
+ * @private
+ * @static
+ */
+var defaults = {
+	&quot;storage&quot;: &quot;./storage&quot;
+};
+
+var events = module.exports.events = {};
+events.resource = {};
+events.resource.create = &quot;resource:create&quot;;
+events.resource.gather = &quot;resource:gather&quot;;
+events.resource.update = &quot;resource:update&quot;;
+events.resource.remove = &quot;resource:remove&quot;;
+
+events.relation = {};
+events.relation.create = &quot;relation:create&quot;;
+events.relation.gather = &quot;relation:gather&quot;;
+events.relation.update = &quot;relation:update&quot;;
+events.relation.remove = &quot;relation:remove&quot;;
+
+events.construct = {};
+events.construct.create = &quot;construct:compile&quot;;
+events.construct.gather = &quot;construct:request&quot;;
+events.construct.update = &quot;construct:reshape&quot;;
+events.construct.remove = &quot;construct:dismiss&quot;;
+
+events.error = &quot;error&quot;;
+
+module.exports.prototype.Construct = module.exports.Construct = Construct;
+module.exports.prototype.Resource = module.exports.Resource = Resource;
+module.exports.prototype.Relation = module.exports.Relation = Relation;
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

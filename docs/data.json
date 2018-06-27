@@ -1,0 +1,1253 @@
+{
+    "project": {
+        "name": "rs-synthesis",
+        "description": "Library for tracking relationships between system resources and querying states.",
+        "version": "0.0.2",
+        "url": "https://github.com/RefugeSystems/Synthesis"
+    },
+    "files": {
+        "lib\\operations\\path.js": {
+            "name": "lib\\operations\\path.js",
+            "modules": {
+                "Operations": 1
+            },
+            "classes": {
+                "OperationPath": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\storage\\index.js": {
+            "name": "lib\\storage\\index.js",
+            "modules": {
+                "SynthesisStorage": 1
+            },
+            "classes": {
+                "StorageUnit": 1,
+                "BasicStorageUnit": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\utilities\\random.js": {
+            "name": "lib\\utilities\\random.js",
+            "modules": {
+                "Utility": 1
+            },
+            "classes": {
+                "Random": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\construct.js": {
+            "name": "lib\\construct.js",
+            "modules": {
+                "Synthesis": 1
+            },
+            "classes": {
+                "Construct": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\index.js": {
+            "name": "lib\\index.js",
+            "modules": {},
+            "classes": {
+                "Synthesis": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\relation.js": {
+            "name": "lib\\relation.js",
+            "modules": {},
+            "classes": {
+                "Relation": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\resource.js": {
+            "name": "lib\\resource.js",
+            "modules": {},
+            "classes": {
+                "Resource": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\revision.js": {
+            "name": "lib\\revision.js",
+            "modules": {},
+            "classes": {
+                "Revision": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Operations": {
+            "name": "Operations",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "OperationPath": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib\\operations\\path.js",
+            "line": 2
+        },
+        "SynthesisStorage": {
+            "name": "SynthesisStorage",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "StorageUnit": 1,
+                "BasicStorageUnit": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib\\storage\\index.js",
+            "line": 96
+        },
+        "Utility": {
+            "name": "Utility",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "Random": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib\\utilities\\random.js",
+            "line": 3,
+            "description": "Provides a suite of functions for generating random data."
+        },
+        "Synthesis": {
+            "name": "Synthesis",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "Construct": 1,
+                "Synthesis": 1,
+                "Relation": 1,
+                "Resource": 1,
+                "Revision": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib\\revision.js",
+            "line": 2
+        }
+    },
+    "classes": {
+        "OperationPath": {
+            "name": "OperationPath",
+            "shortname": "OperationPath",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Operations",
+            "file": "lib\\operations\\path.js",
+            "line": 2,
+            "is_constructor": 1,
+            "static": 1,
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "The IDs between which to find paths, in their indexed order.",
+                    "type": "Array"
+                },
+                {
+                    "name": "construct",
+                    "description": "The space in which to solve for the paths.",
+                    "type": "Construct",
+                    "optional": true
+                }
+            ]
+        },
+        "StorageUnit": {
+            "name": "StorageUnit",
+            "shortname": "StorageUnit",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "SynthesisStorage",
+            "namespace": "",
+            "file": "lib\\storage\\index.js",
+            "line": 2,
+            "is_constructor": 1
+        },
+        "BasicStorageUnit": {
+            "name": "BasicStorageUnit",
+            "shortname": "BasicStorageUnit",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "SynthesisStorage",
+            "namespace": "",
+            "file": "lib\\storage\\index.js",
+            "line": 96,
+            "extends": "StorageUnit",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ]
+        },
+        "Random": {
+            "name": "Random",
+            "shortname": "Random",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Utility",
+            "namespace": "",
+            "file": "lib\\utilities\\random.js",
+            "line": 3,
+            "description": "Provides a suite of functions for generating random data.",
+            "is_constructor": 1,
+            "static": 1
+        },
+        "Construct": {
+            "name": "Construct",
+            "shortname": "Construct",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Synthesis",
+            "namespace": "",
+            "file": "lib\\construct.js",
+            "line": 15,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "emit",
+                    "description": "Emit function from Synthesis parent",
+                    "type": "Function"
+                },
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "fields",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "Synthesis": {
+            "name": "Synthesis",
+            "shortname": "Synthesis",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Synthesis",
+            "namespace": "",
+            "file": "lib\\index.js",
+            "line": 10,
+            "description": "All requests return a \"callID\".",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "storage",
+                    "description": "",
+                    "type": "StorageUnit",
+                    "optional": true
+                }
+            ]
+        },
+        "Relation": {
+            "name": "Relation",
+            "shortname": "Relation",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Synthesis",
+            "namespace": "",
+            "file": "lib\\relation.js",
+            "line": 2,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "fields",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "Resource": {
+            "name": "Resource",
+            "shortname": "Resource",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Synthesis",
+            "namespace": "",
+            "file": "lib\\resource.js",
+            "line": 2,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "fields",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "Revision": {
+            "name": "Revision",
+            "shortname": "Revision",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Synthesis",
+            "namespace": "",
+            "file": "lib\\revision.js",
+            "line": 2,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "mutation",
+                    "description": "Discrete key:value pairs indicating what changed",
+                    "type": "Object"
+                }
+            ]
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 9,
+            "itemtype": "method",
+            "name": "getResources",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 15,
+            "itemtype": "method",
+            "name": "putResource",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Resource"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 21,
+            "itemtype": "method",
+            "name": "modResource",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Resource"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 27,
+            "itemtype": "method",
+            "name": "outResources",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 34,
+            "itemtype": "method",
+            "name": "getRelations",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 40,
+            "itemtype": "method",
+            "name": "putRelation",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Relation"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 46,
+            "itemtype": "method",
+            "name": "modRelation",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Relation"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 52,
+            "itemtype": "method",
+            "name": "outRelations",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 59,
+            "itemtype": "method",
+            "name": "getConstructs",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 65,
+            "itemtype": "method",
+            "name": "putConstruct",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Construct"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 71,
+            "itemtype": "method",
+            "name": "modConstruct",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Construct"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 77,
+            "itemtype": "method",
+            "name": "outConstructs",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 84,
+            "itemtype": "method",
+            "name": "getResourceRelations",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 90,
+            "itemtype": "method",
+            "name": "getResourceTargets",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "StorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 107,
+            "itemtype": "property",
+            "name": "resources",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "BasicStorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 115,
+            "itemtype": "property",
+            "name": "relations",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "BasicStorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 123,
+            "itemtype": "property",
+            "name": "constructs",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "BasicStorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\storage\\index.js",
+            "line": 131,
+            "itemtype": "property",
+            "name": "linkage",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "BasicStorageUnit",
+            "module": "SynthesisStorage"
+        },
+        {
+            "file": "lib\\utilities\\random.js",
+            "line": 12,
+            "description": "Quick reference array for generating random strings",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "alphanumeric",
+            "type": "String[]",
+            "class": "Random",
+            "module": "Utility"
+        },
+        {
+            "file": "lib\\utilities\\random.js",
+            "line": 20,
+            "type": "Number[]",
+            "itemtype": "property",
+            "name": "primes",
+            "access": "private",
+            "tagname": "",
+            "class": "Random",
+            "module": "Utility"
+        },
+        {
+            "file": "lib\\utilities\\random.js",
+            "line": 1028,
+            "description": "<p>Method for getting a random floating point number x | min <= x < min + range</p>\n<p>As an example, random(5) will yield a number between 0 and 5 where as\nrandom(5,5) will yield a number between 5 and 10.<p>",
+            "itemtype": "method",
+            "name": "number",
+            "params": [
+                {
+                    "name": "range",
+                    "description": "The \"width\" of the range of numbers desired.",
+                    "type": "Number"
+                },
+                {
+                    "name": "min",
+                    "description": "The minimum number desired.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "A random number.",
+                "type": "Number"
+            },
+            "class": "Random",
+            "module": "Utility"
+        },
+        {
+            "file": "lib\\utilities\\random.js",
+            "line": 1043,
+            "description": "<p>Method for getting a random integer x | min <= x < min + range</p>\n<p>As an example, random(5) will yield a number between 0 and 4 where as\nrandom(5,5) will yield a number between 5 and 9.<p>",
+            "itemtype": "method",
+            "name": "integer",
+            "params": [
+                {
+                    "name": "range",
+                    "description": "The \"width\" of the range of numbers desired.",
+                    "type": "Number"
+                },
+                {
+                    "name": "min",
+                    "description": "The minimum number desired.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "A random number.",
+                "type": "Number"
+            },
+            "class": "Random",
+            "module": "Utility"
+        },
+        {
+            "file": "lib\\utilities\\random.js",
+            "line": 1058,
+            "description": "Get a random alphanumeric string (ie. matches pattern ^[a-zA-Z0-9]*$.",
+            "itemtype": "method",
+            "name": "string",
+            "params": [
+                {
+                    "name": "len",
+                    "description": "The desired length for the returned String.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "A random alphanumeric string",
+                "type": "String"
+            },
+            "class": "Random",
+            "module": "Utility"
+        },
+        {
+            "file": "lib\\utilities\\random.js",
+            "line": 1075,
+            "description": "<p>Returns a prime from a list generated from Java\"s Math lib</p>",
+            "itemtype": "method",
+            "name": "prime",
+            "return": {
+                "description": "A random prime number.",
+                "type": "Number"
+            },
+            "class": "Random",
+            "module": "Utility"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 61,
+            "itemtype": "method",
+            "name": "options",
+            "return": {
+                "description": "A copy of the options object for introspection.",
+                "type": "Object"
+            },
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 82,
+            "itemtype": "method",
+            "name": "createResource",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 95,
+            "itemtype": "method",
+            "name": "gatherResources",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 108,
+            "itemtype": "method",
+            "name": "removeResources",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 121,
+            "itemtype": "method",
+            "name": "createRelation",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 134,
+            "itemtype": "method",
+            "name": "gatherRelations",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 147,
+            "itemtype": "method",
+            "name": "removeRelations",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 160,
+            "itemtype": "method",
+            "name": "compileConstruct",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 174,
+            "itemtype": "method",
+            "name": "requestConstructs",
+            "params": [
+                {
+                    "name": "concept",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "resources",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 188,
+            "itemtype": "method",
+            "name": "dismissConstructs",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 201,
+            "itemtype": "method",
+            "name": "appendResource",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Target Construct's ID",
+                    "type": "Number"
+                },
+                {
+                    "name": "resources",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 220,
+            "itemtype": "method",
+            "name": "detachResources",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Target Construct's ID",
+                    "type": "Number"
+                },
+                {
+                    "name": "resources",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 239,
+            "itemtype": "method",
+            "name": "appendRelations",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Target Construct's ID",
+                    "type": "Number"
+                },
+                {
+                    "name": "relations",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 258,
+            "itemtype": "method",
+            "name": "detachRelations",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Target Construct's ID",
+                    "type": "Number"
+                },
+                {
+                    "name": "relations",
+                    "description": "",
+                    "type": "Array | Number"
+                }
+            ],
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\index.js",
+            "line": 278,
+            "itemtype": "property",
+            "name": "defaults",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "Synthesis",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 12,
+            "itemtype": "property",
+            "name": "id",
+            "type": "Number",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 18,
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 24,
+            "itemtype": "property",
+            "name": "url",
+            "type": "String",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 30,
+            "itemtype": "property",
+            "name": "description",
+            "type": "String",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 36,
+            "description": "Indicates that this relationship belongs to a specific description of\nresources.\n\nServes to separate out relationships from the general mapping to allow\ndifferent flows to be tracked amoung similar resources.",
+            "itemtype": "property",
+            "name": "concept",
+            "type": "String",
+            "default": "undefined",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 47,
+            "itemtype": "property",
+            "name": "environment",
+            "type": "Number",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 53,
+            "itemtype": "property",
+            "name": "type",
+            "type": "Number",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 59,
+            "itemtype": "property",
+            "name": "subtype",
+            "type": "String",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 65,
+            "itemtype": "property",
+            "name": "source",
+            "type": "Number",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 71,
+            "itemtype": "property",
+            "name": "target",
+            "type": "Number",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 77,
+            "itemtype": "property",
+            "name": "created",
+            "type": "Number",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 83,
+            "itemtype": "property",
+            "name": "updated",
+            "type": "Number",
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\relation.js",
+            "line": 96,
+            "itemtype": "method",
+            "name": "mutate",
+            "params": [
+                {
+                    "name": "mutated",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Object where the key:Value pairs represent what has changed in this Resource.",
+                "type": "Object"
+            },
+            "class": "Relation",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 12,
+            "itemtype": "property",
+            "name": "id",
+            "type": "Number",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 18,
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 24,
+            "itemtype": "property",
+            "name": "url",
+            "type": "String",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 30,
+            "itemtype": "property",
+            "name": "description",
+            "type": "String",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 36,
+            "description": "Denotes the specific environment for this resource if applicable.\n\nMeant for things along the lines of Prod, QA, Dev but should not be\nconsidered limited to.",
+            "itemtype": "property",
+            "name": "environment",
+            "type": "String",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 45,
+            "description": "Used to track who this resource's activity effects.",
+            "itemtype": "property",
+            "name": "audience",
+            "type": "String",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 51,
+            "description": "Top level type indicator.",
+            "itemtype": "property",
+            "name": "type",
+            "type": "String",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 57,
+            "description": "Top level customizable type indicator.\n\nShould give more detail to the selected type.",
+            "itemtype": "property",
+            "name": "subtype",
+            "type": "String",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 66,
+            "description": "When this resource should be considered to start.\n\nThis does not remove the resource or change its status,\nsimply a flag to denote a timespan for temporal things\nsuch as projects, licenses, or contracts.",
+            "itemtype": "property",
+            "name": "commence",
+            "type": "Number",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 76,
+            "description": "When this resource should be considered completed.\n\nThis does not remove the resource or change its status,\nsimply a flag to denote a timespan for temporal things\nsuch as projects, licenses, or contracts.",
+            "itemtype": "property",
+            "name": "conclude",
+            "type": "Number",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 86,
+            "itemtype": "property",
+            "name": "created",
+            "type": "Number",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 92,
+            "itemtype": "property",
+            "name": "updated",
+            "type": "Number",
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\resource.js",
+            "line": 105,
+            "itemtype": "method",
+            "name": "mutate",
+            "params": [
+                {
+                    "name": "mutated",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Object where the key:Value pairs represent what has changed in this Resource.",
+                "type": "Object"
+            },
+            "class": "Resource",
+            "module": "Synthesis"
+        },
+        {
+            "file": "lib\\revision.js",
+            "line": 14,
+            "description": "Indicates what type of revision to the Construct this\nrecord indicates;\n\n0: Create\n1: Update\n2: Delete\n\nOther numbers should be considered invalid.\n\nIf a customization is desired here, use \"subtype\".",
+            "itemtype": "property",
+            "name": "type",
+            "type": "Number",
+            "default": "0",
+            "class": "Revision",
+            "module": "Synthesis"
+        }
+    ],
+    "warnings": []
+}
