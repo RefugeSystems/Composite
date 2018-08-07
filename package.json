@@ -1,38 +1,38 @@
 {
-	"name": "rs-synthesis",
-	"version": "0.0.201",
-	"description": "Library for tracking relationships between system resources and querying states.",
-	"homepage": "https://github.com/RefugeSystems/Synthesis",
-	"author": "aetherwalker@refugesystems.net",
-	"license": "GPL-3.0",
-	"main": "lib/index.js",
-	"scripts": {
-		"test": "grunt test"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+ssh://git@github.com/RefugeSystems/Synthesis.git"
-	},
-	"keywords": [
-		"project",
-		"tracking",
-		"systems",
-		"graphs"
-	],
-	"bugs": {
-		"url": "https://github.com/RefugeSystems/Synthesis/issues"
-	},
-	"dependencies": {
-		"random": "git+ssh://git@github.com/RefugeSystems/Random.git"
-	},
-	"devDependencies": {
-		"grunt": "^1.0.2",
-		"grunt-contrib-watch": "^1.1.0",
-		"grunt-contrib-yuidoc": "^1.0.0",
-		"gruntify-eslint": "^4.0.0",
-		"jasmine": "^3.1.0",
-		"jasmine-console-reporter": "^3.0.2",
-		"load-grunt-tasks": "^4.0.0"
-	},
-	"aconfiguration": {}
+  "name": "rs-synthesis",
+  "version": "0.0.202",
+  "description": "Library for tracking relationships between system resources and querying states.",
+  "homepage": "https://github.com/RefugeSystems/Synthesis",
+  "author": "aetherwalker@refugesystems.net",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RefugeSystems/Synthesis.git"
+  },
+  "keywords": [
+    "project",
+    "tracking",
+    "systems",
+    "graphs"
+  ],
+  "bugs": {
+    "url": "https://github.com/RefugeSystems/Synthesis/issues"
+  },
+  "dependencies": {
+    "rs-random": "^1.0.41"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-contrib-yuidoc": "^1.0.0",
+    "gruntify-eslint": "^4.0.0",
+    "jasmine": "^3.1.0",
+    "jasmine-console-reporter": "^3.0.2",
+    "load-grunt-tasks": "^4.0.0"
+  },
+  "aconfiguration": {}
 }
